@@ -33,11 +33,20 @@ function validateForm () {
   }
   // If form is valid and passwords match
   if (isValid && passwordsMatch) {
-    // Submit data if valid
+    // Submit data if valid and clear form
     storeFormData()
+    form.reset()
+    password1El.style.border = '1px solid red'
+    password2El.style.border = '1px solid red'
+
     message.textContent = 'Successfully Registered!'
     message.style.color = 'green'
     messageContainer.style.borderColor = 'green'
+    setTimeout(function() {
+      message.textContent = 'Don\'t Hesitate!'
+      message.style.color = '#000'
+      messageContainer.style.borderColor = '#000' 
+    }, 2000)
   }
 }
 
@@ -50,7 +59,7 @@ function storeFormData () {
     password: form.password.value
   }
   // Do something with user data
-  console.log(user)
+  // console.log(user)
 }
 
 function processFormData (e) {
